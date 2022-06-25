@@ -5,7 +5,7 @@ import "./SignUp.css";
 
 export const SignUp = () => {
   const navigate = useNavigate();
-  const [user, setUser] = useState({ name: "", email: "", password: "" });
+  const [user, setUser] = useState({ title: "", name: "", email: "", password: "" });
   const [formError, setFormError] = useState(false);
 
   const handleOnChange = (e) => {
@@ -15,6 +15,7 @@ export const SignUp = () => {
   const handleUserRegistration = (e) => {
     e.preventDefault();
     if (
+      user.title.trim().length === 0 ||
       user.name.trim().length === 0 ||
       user.email.trim().length === 0 ||
       user.password.trim().length === 0
@@ -24,14 +25,14 @@ export const SignUp = () => {
     }
     setFormError(false);
     axios
-      .post("http://localhost:3001/api/users", user, {
+      .post("http://localhost:3001/api/auth/register", user, {
         headers: {
           "content-type": "application/json",
         },
       })
       .then((response) => {
         if (response.data.success) {
-          setUser({ name: "", email: "", password: "" });
+          setUser({ title: "", name: "", email: "", password: "" });
           navigate("/sign-in");
         }
       })
@@ -48,12 +49,24 @@ export const SignUp = () => {
       >
         <h1 className="text-center page-title">Sign Up</h1>
         <div className="input-group">
+          <label htmlFor="title">Enter Title</label>
+          <input
+            type="text"
+            name="title"
+            id="title"
+            placeholder="Mr, Ms, Miss"
+            className="input-control"
+            value={user.title}
+            onChange={handleOnChange}
+          />
+        </div>
+        <div className="input-group">
           <label htmlFor="name">Enter your name</label>
           <input
             type="text"
             name="name"
             id="name"
-            placeholder="what should we call you?"
+            placeholder="Full name"
             className="input-control"
             value={user.name}
             onChange={handleOnChange}
@@ -65,7 +78,7 @@ export const SignUp = () => {
             type="email"
             name="email"
             id="email"
-            placeholder="where we can find you electronically?"
+            placeholder="test@mail.com"
             className="input-control"
             value={user.email}
             onChange={handleOnChange}
@@ -74,7 +87,7 @@ export const SignUp = () => {
         <div className="input-group">
           <label htmlFor="password">Enter your secret password</label>
           <input
-            placeholder="shhh....."
+            placeholder="Use special character"
             type="password"
             name="password"
             id="password"
@@ -85,7 +98,7 @@ export const SignUp = () => {
         </div>
         <div className="input-group">
           <button type="submit" className="btn btn-primary">
-            I'm ready! Sign me Up
+            Create Account
           </button>
         </div>
       </form>

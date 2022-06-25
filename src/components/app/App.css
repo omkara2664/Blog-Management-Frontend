@@ -1,0 +1,17 @@
+.app {
+    min-height: 100vh;
+    background-color: #B5FFE1;
+    display: grid;
+    grid-template-rows: 70px 1fr;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main {
+    display: grid;
+    place-items: center;
+}
