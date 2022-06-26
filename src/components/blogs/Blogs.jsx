@@ -86,7 +86,7 @@ export const Blogs = () => {
       })
       .then((response) => {
         const blogs = response.data.data.blogs;
-        setBlogs(blogs);
+        // console.log(blogs);
       })
       .catch((error) => {
         console.error(error);
@@ -107,7 +107,7 @@ export const Blogs = () => {
           onSubmit={handleBlogSubmit}
           ref={blogRef}
         >
-          <h1 className="text-center page-title">Add your Thougth</h1>
+          <h4 className="text-center page-title">Add your Thougth</h4>
           <div className="input-group">
             <label htmlFor="title">Your Blog name</label>
             <input
@@ -154,7 +154,7 @@ export const Blogs = () => {
       {formError ? (
         <div className="alert alert-danger">
           <p className="alert-message">
-            All Fields madentory or may be blog exist.<br /> Please verify once !
+            All Fields madentory.<br /> Please verify once !
           </p>
         </div>
       ) : null}

@@ -1,8 +1,10 @@
 .app {
     min-height: 100vh;
-    background-color: #B5FFE1;
     display: grid;
     grid-template-rows: 70px 1fr;
+    background-color: #B5FFE1;
+    /* background-image: url(../../utils/wallpaperflare.com_wallpaper.jpg); */
+    /* background-size: auto 100%, cover; */
 }
 
 .header {

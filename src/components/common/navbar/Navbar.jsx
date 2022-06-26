@@ -10,12 +10,12 @@ export const Navbar = () => (
     </li>
     <li className="navbar-item">
       <NavLink className="navbar-link" to={"/blogs"}>
-        Blogs
+        Type Blogs
       </NavLink>
     </li>
     <li className="navbar-item">
       <NavLink className="navbar-link" to={"/AllBlogs"}>
-        Your Blogs
+        See Blogs
       </NavLink>
     </li>
     <li className="navbar-item">

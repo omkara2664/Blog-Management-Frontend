@@ -5,6 +5,7 @@ import { BlogEdit } from "../blogs/components/blog-edit/BlogEdit";
 import { Navbar } from "../common/navbar/Navbar";
 import { SignIn } from "../sign-in/SignIn";
 import { SignUp } from "../sign-up/SignUp";
+import { Home } from "../home/Home";
 import "./App.css";
 
 const App = () => {
@@ -15,12 +16,13 @@ const App = () => {
       </header>
       <main className="main">
         <Routes>
+          {/* <Route path="/" element={<Home />} /> */}
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/AllBlogs" element={<AllBlogs />} />
           <Route path="/blogs/:id" element={<BlogEdit />} />
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
-          <Route path="/" element={<h1>Wecome In Blogging</h1>} />
+          <Route path="/" element={<Home />} />
         </Routes>
       </main>
     </div>

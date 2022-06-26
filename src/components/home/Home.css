@@ -1,0 +1,13 @@
+.btn-home:hover {
+    background-color: green;
+    border-color: #b5ffe1
+}
+
+.btn-home {
+    margin: 1em;
+    background-color: #32CD32;
+    border-radius: 12px;
+    border: none;
+
+
+}
