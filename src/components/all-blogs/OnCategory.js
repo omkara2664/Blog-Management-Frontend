@@ -4,22 +4,29 @@ import axios from "axios";
 import "../blogs/Blogs.css";
 import { useNavigate } from 'react-router-dom';
 
-export const AllBlogs = () => {
+export const OnCategory = () => {
     const [blog, setBlogs] = useState([]);
+    const [value, setValue] = useState([]);
     const [show, setShow] = useState(false);
     const [formError, setFormError] = useState(false);
     const blogRef = useRef();
     const navigate = useNavigate();
-    const handleBlogSubmit = (e) => {
+
+    // const handleBlogSubmit = (e) => {
+    //     e.preventDefault();
+    //     const category = e.target.category.value;
+    //     // setValue(category);
+    //     // console.log(category)
+    // }
+    // console.log(value)
+    const handleOnChange = (e) => {
+        // e.preventDefault();
         e.preventDefault();
-        // console.log("You on right way, this is all blog data")
-    }
-
-
-    useEffect(() => {
+        const category = e.target.category.value;
+        console.log(category)
         const token = localStorage.getItem("accessToken");
         axios
-            .get("http://localhost:3001/api/blogs", {
+            .get(`http://localhost:3001/api/blogs/${category}`, {
                 headers: {
                     authorization: `Bearer ${token}`,
                 },
@@ -33,19 +40,17 @@ export const AllBlogs = () => {
                 // <P>May be User not Created Any blog till now ! </P>
                 setFormError(true)
             });
-    }, []);
-    const navOncategory = (e) => {
-        e.preventDefault();
-        navigate("/BlogOnCata");
-    }
+    };
+
     return (
         <div className='blogs'>
             <div className="blogs_header">
-                <h1 className='page-title'>{!show ? "Let's go to your creation" : "This is your creation !"}</h1>
+                <h1 className='page-title'>{!show ? "Find on Category" : "Category Colliection!"}</h1>
             </div>
             <div className="blogs_footer">
                 <form className='blog-form spaced-form'
-                    onSubmit={(e) => handleBlogSubmit(e)}
+                    onSubmit={(e) => handleOnChange(e)}
+
                     ref={blogRef}
                 >
                     {show ?
@@ -63,23 +68,25 @@ export const AllBlogs = () => {
                             {formError ? (
                                 <div className="alert alert-danger">
                                     <p className="alert-message">
-                                        Sorry May be User not Created Any blog till now !
+                                        Sorry Category not available !
                                     </p>
                                 </div>
                             ) : null}
                         </div>
                         : ""
                     }
+                    <input
+                        type="text"
+                        name="category"
+                        placeholder="Enter Categoy"
+                        className="input-control"
+                    // onChange={(e) => handleOnChange(e)}   
+                    />
                     <div className="input-group">
                         <button type='submit' className='btn btn-primary'
-                            onClick={navOncategory} >
-                            On Category
-                        </button>
-                    </div>
-                    <div className="input-group">
-                        <button type='submit' className='btn btn-primary'
-                            onClick={() => setShow(true)} hidden={show} >
-                            All Blogs !
+                            onClick={() => setShow(true)}
+                        >
+                            Search
                         </button>
                     </div>
                 </form>
@@ -88,3 +95,6 @@ export const AllBlogs = () => {
         </div >
     )
 }
+
+
+

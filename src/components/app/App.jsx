@@ -6,6 +6,7 @@ import { Navbar } from "../common/navbar/Navbar";
 import { SignIn } from "../sign-in/SignIn";
 import { SignUp } from "../sign-up/SignUp";
 import { Home } from "../home/Home";
+import { OnCategory } from "../all-blogs/OnCategory";
 import "./App.css";
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/" element={<Home />} />
+          < Route path="/BlogOnCata" element={<OnCategory />} />
         </Routes>
       </main>
     </div>
