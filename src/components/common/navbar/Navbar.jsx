@@ -19,9 +19,6 @@ export const Navbar = () => (
       </NavLink>
     </li>
     <li className="navbar-item">
-      {/* <NavLink className="navbar-link" to={"/BlogOnCata"}>
-        Category
-      </NavLink> */}
     </li>
     <li className="navbar-item">
       <NavLink className="navbar-link" to={"/sign-in"}>

@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { BlogList } from "./components/blog-list/BlogList";
+import { UpdateBlog } from "../all-blogs/UpdateBlog";
 import "./Blogs.css";
 
 export const Blogs = () => {
@@ -29,7 +29,6 @@ export const Blogs = () => {
     } catch (error) {
       console.log("Please enter value in all field ");
       setFormError(true)
-
     }
     setFormError(false);
     const token = localStorage.getItem("accessToken");

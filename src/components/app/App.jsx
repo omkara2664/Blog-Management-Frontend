@@ -7,6 +7,7 @@ import { SignIn } from "../sign-in/SignIn";
 import { SignUp } from "../sign-up/SignUp";
 import { Home } from "../home/Home";
 import { OnCategory } from "../all-blogs/OnCategory";
+import { UpdateBlog } from "../all-blogs/UpdateBlog";
 import "./App.css";
 
 const App = () => {
@@ -17,7 +18,6 @@ const App = () => {
       </header>
       <main className="main">
         <Routes>
-          {/* <Route path="/" element={<Home />} /> */}
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/AllBlogs" element={<AllBlogs />} />
           <Route path="/blogs/:id" element={<BlogEdit />} />
@@ -25,6 +25,7 @@ const App = () => {
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/" element={<Home />} />
           < Route path="/BlogOnCata" element={<OnCategory />} />
+          <Route path="/updateblog" element={<UpdateBlog />} />
         </Routes>
       </main>
     </div>

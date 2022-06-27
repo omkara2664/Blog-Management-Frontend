@@ -27,7 +27,7 @@ export const OnCategory = () => {
         console.log(category)
         const token = localStorage.getItem("accessToken");
         axios
-            .get(`http://localhost:3001/api/blogs/${category}`, {
+            .get(`http://localhost:3001/api/blogs/category/${category}`, {
                 headers: {
                     authorization: `Bearer ${token}`,
                 },
@@ -98,9 +98,9 @@ export const OnCategory = () => {
                 <button className='btn btn-nav-delete'
                     onClick={atDeletePlace}
                 >
-                    Delete
+                    Updatation
                 </button>
-                <h6>go to All Blogs and Delete</h6>
+                <h6>go to All Blogs and Delete or Edt</h6>
             </div>
 
         </div >

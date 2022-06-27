@@ -49,12 +49,20 @@ export const AllBlogs = () => {
                 const filter = blog.filter(({ _id }) => _id !== id)
                 setBlogs(filter);
             }
+        }).catch((error) => {
+            setFormError(true)
         })
     }
+
     const navOncategory = (e) => {
         e.preventDefault();
         navigate("/BlogOnCata");
     }
+    const navEdit = (e) => {
+        e.preventDefault();
+        navigate("/updateblog")
+    }
+
     return (
         <div className='blogs'>
             <div className="blogs_header">
@@ -79,6 +87,11 @@ export const AllBlogs = () => {
                                         <button className='btn btn-delete'
                                             onClick={() => onDelete(blog._id)}
                                         >Delete</button>
+                                    </span>
+                                    <span>
+                                        <button className='btn btn-delete'
+                                            onClick={navEdit}
+                                        >Edit</button>
                                     </span>
                                 </li>
                             ))}

@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router'
 import './index.css';
 import App from './components/app/App';
 import reportWebVitals from './reportWebVitals';
@@ -12,6 +13,8 @@ root.render(
       <App />
     </BrowserRouter>
   </React.StrictMode>
+
+
 );
 
 
