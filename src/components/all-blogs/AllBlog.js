@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import "../blogs/Blogs.css";
+import "./AllBlog.css"
 import { useNavigate } from 'react-router-dom';
 
 export const AllBlogs = () => {
@@ -34,6 +35,22 @@ export const AllBlogs = () => {
                 setFormError(true)
             });
     }, []);
+
+    const onDelete = (id) => {
+        // e.preventDefault()
+        const token = localStorage.getItem("accessToken");
+        console.log(id);
+        axios.delete(`http://localhost:3001/api/blogs/${id}`, {
+            headers: {
+                authorization: `Bearer ${token}`,
+            },
+        }).then((response) => {
+            if (response.data.success) {
+                const filter = blog.filter(({ _id }) => _id !== id)
+                setBlogs(filter);
+            }
+        })
+    }
     const navOncategory = (e) => {
         e.preventDefault();
         navigate("/BlogOnCata");
@@ -58,6 +75,11 @@ export const AllBlogs = () => {
                                         <h5>Category:{blog.category}</h5>
                                         <p>Description :{blog.description}</p>
                                     </div>
+                                    <span>
+                                        <button className='btn btn-delete'
+                                            onClick={() => onDelete(blog._id)}
+                                        >Delete</button>
+                                    </span>
                                 </li>
                             ))}
                             {formError ? (

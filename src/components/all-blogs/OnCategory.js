@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import "../blogs/Blogs.css";
 import { useNavigate } from 'react-router-dom';
+import "./AllBlog.css"
 
 export const OnCategory = () => {
     const [blog, setBlogs] = useState([]);
@@ -41,6 +42,10 @@ export const OnCategory = () => {
                 setFormError(true)
             });
     };
+    const atDeletePlace = (e) => {
+        e.preventDefault();
+        navigate("/AllBlogs");
+    }
 
     return (
         <div className='blogs'>
@@ -90,6 +95,12 @@ export const OnCategory = () => {
                         </button>
                     </div>
                 </form>
+                <button className='btn btn-nav-delete'
+                    onClick={atDeletePlace}
+                >
+                    Delete
+                </button>
+                <h6>go to All Blogs and Delete</h6>
             </div>
 
         </div >

@@ -40,6 +40,7 @@ code {
 .btn-primary {
   background-color: #b5ffe1;
   border-color: #b5ffe1;
+  border-radius: 20px;
 }
 
 .btn-primary:hover {
