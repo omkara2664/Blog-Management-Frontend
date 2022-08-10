@@ -1,7 +1,8 @@
-import { useState, useRef, useEffect } from "react";
+import React from "react";
+import { useState, useRef } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { UpdateBlog } from "../all-blogs/UpdateBlog";
+
 import "./Blogs.css";
 
 export const Blogs = () => {
@@ -58,39 +59,39 @@ export const Blogs = () => {
   // };
 
 
-  const handleBlogDelete = (blogId) => {
-    const token = localStorage.getItem("accessToken");
-    axios
-      .delete(`http://localhost:3001/api/blogs/${blogId}`, {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => {
-        if (response.data.success) {
-          const filteredBlogs = blog.filter(({ _id }) => _id !== blogId);
-          setBlogs(filteredBlogs);
-        }
-      })
-      .catch((error) => console.error(error));
-  };
+  // const handleBlogDelete = (blogId) => {
+  //   const token = localStorage.getItem("accessToken");
+  //   axios
+  //     .delete(`http://localhost:3001/api/blogs/${blogId}`, {
+  //       headers: {
+  //         authorization: `Bearer ${token}`,
+  //       },
+  //     })
+  //     .then((response) => {
+  //       if (response.data.success) {
+  //         const filteredBlogs = blog.filter(({ _id }) => _id !== blogId);
+  //         setBlogs(filteredBlogs);
+  //       }
+  //     })
+  //     .catch((error) => console.error(error));
+  // };
 
-  useEffect(() => {
-    const token = localStorage.getItem("accessToken");
-    axios
-      .get("http://localhost:3001/api/blogs", {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => {
-        const blogs = response.data.data.blogs;
-        // console.log(blogs);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("accessToken");
+  //   axios
+  //     .get("http://localhost:3001/api/blogs", {
+  //       headers: {
+  //         authorization: `Bearer ${token}`,
+  //       },
+  //     })
+  //     .then((response) => {
+  //       const blogs = response.data.data.blogs;
+  //       // console.log(blogs);
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // }, []);
 
   return (
     <div className="blogs">

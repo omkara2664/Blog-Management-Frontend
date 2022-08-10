@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import "../blogs/Blogs.css";
 import "./AllBlog.css"
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 export const AllBlogs = () => {
     const [blog, setBlogs] = useState([]);
@@ -60,7 +60,7 @@ export const AllBlogs = () => {
     }
     const navEdit = (e) => {
         e.preventDefault();
-        navigate("/updateblog")
+        navigate("/BlogEdit")
     }
 
     return (
@@ -89,9 +89,11 @@ export const AllBlogs = () => {
                                         >Delete</button>
                                     </span>
                                     <span>
-                                        <button className='btn btn-delete'
-                                            onClick={navEdit}
-                                        >Edit</button>
+                                        <Link to={"/BlogEdit/"+ blog._id}>
+                                            <button className='btn btn-delete'
+                                                // onClick={navEdit}
+                                            >Edit</button>
+                                        </Link>
                                     </span>
                                 </li>
                             ))}
